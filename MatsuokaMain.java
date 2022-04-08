@@ -1,5 +1,35 @@
+
 import java.util.*;
 public class MatsuokaMain{
+	/*public static void daysOfMonth(String yearMonth){
+		String ym[]=yearMonth.split(",");
+		int[] num_ym=new int[ym.length];
+		for(int i=0;i<ym.length;i++){
+		num_ym[i]=Integer.parseInt(ym[i]);
+		}
+		if(num_ym[0]%4==0){
+		if(num_ym[0]%100==0&&num_ym[0]%400!=0){
+		if(num_ym[1]==2){
+		System.out.printf("%d年の%d月は28日です",num_ym[0],num_ym[1]);
+		}else if(num_ym[1]%2==0&&num_ym[1]<7||num_ym[1]%2!=0&&num_ym[1]>8){
+		System.out.printf("%d年の%d月は30日です",num_ym[0],num_ym[1]);
+		}else{
+		System.out.printf("%d年の%d月は31日です",num_ym[0],num_ym[1]);
+		}
+
+		}else if(num_ym[1]==2){
+		System.out.printf("%d年の%d月は29日です",num_ym[0],num_ym[1]);
+		}
+		}else{
+		if(num_ym[1]==2){
+		System.out.printf("%d年の%d月は28日です",num_ym[0],num_ym[1]);
+		}else if(num_ym[1]%2==0&&num_ym[1]<7||num_ym[1]%2!=0&&num_ym[1]>8){
+		System.out.printf("%d年の%d月は30日です",num_ym[0],num_ym[1]);
+		}else{
+		System.out.printf("%d年の%d月は31日です",num_ym[0],num_ym[1]);
+		}
+		}
+		}*/
 	public static int[] csvToIntarr(String csv){
 		String ym[]=csv.split(",");
 		int[] num_ym=new int[ym.length];
@@ -10,29 +40,27 @@ public class MatsuokaMain{
 	}
 
 	public static boolean isLeapYear(int year){
-		boolean isYear=false;
 		if(year%4==0){
 			if(year%100==0&&year%400!=0){
-				return isYear;
+				return false;
 			}else{
-				isYear=true;
-				return isYear;
+				return true;
 			}
 		}
-		return isYear;
+		return false;
 	}
 
 	public static int daysOfMonth(int year,int month){
 		int day;
-		boolean isYear;
-		isYear=isLeapYear(year);
-		if(isYear==true&&month==2){
+		boolean isLeapYear;
+		isLeapYear=isLeapYear(year);
+		if(isLeapYear==true&&month==2){
 			day=29;
 			return day;
 		}else if(month==2){
 			day=28;
 			return day;
-		}else if(month%2==0&&month<7||month%2!=0&&month>8){
+		}else if(month==4||month==6||month==9||month==11){
 			day=30;
 			return day;
 		}else{
