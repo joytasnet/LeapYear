@@ -4,11 +4,8 @@ public class NagasuMain{
 		System.out.print("年月をカンマ区切りで入力>>");
 		String input = new Scanner(System.in).nextLine();
 		int[] years = csvToIntArr(input); 
-		boolean isleap = isLeapYear(years[0]);
+		//boolean isleap = isLeapYear(years[0]);
 		int Day = daysOfMonth(years[0],years[1]);
-		if(isleap && years[1]==2){
-			Day =29;
-		}
 		System.out.printf
 			("%d年%d月は%d日まであります",years[0],years[1],Day);
 	}
@@ -30,7 +27,12 @@ public class NagasuMain{
 	public static int daysOfMonth(int year,int month){
 		int day=31;
 		if(month==2){
-			day = 28;
+		  boolean isleap = isLeapYear(year);
+			if(isleap){
+				day=29;
+			}else{
+				day=28;
+			}
 		}else if(month ==4||month==6||month==9){
 			day = 30;
 		}
