@@ -10,12 +10,11 @@ public class AkitaMain{
 	}
 	public static int[] csvToIntArr(String csv){
 		String [] yearMonthS = csv.split(",");
-		int[] yearMonth ={
-			Integer.parseInt(yearMonthS[0]),
-			Integer.parseInt(yearMonthS[1]),
-		};
+		int[] yearMonth = new int [yearMonthS.length];
+		for(int i=0;i<yearMonthS.length;i++){
+			yearMonth[i] =Integer.parseInt(yearMonthS[i]);
+		}
 		return yearMonth;
-
 	}
 	public static boolean isLeapYear(int year){
 		boolean isLY;
